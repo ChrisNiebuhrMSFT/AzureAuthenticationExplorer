@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AzureAuthenticationExplorerUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Azure Authentication Explorer (Chris Niebuhr)" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <GroupBox Header="Select Authentication option"  HorizontalAlignment="Left" Margin="5">
+                <StackPanel Margin="5">
+                    <RadioButton Content="Password-Flow Authentication" />
+                    <RadioButton Content="AuthCode-Flow Authentication" />
+                    <RadioButton Content="DeviceCode-Flow Authentication" />
+                    <RadioButton Content="Client Credential-Flow Authentication" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Password-Flow Authentication" >
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="UserName:" Margin="5" MinWidth="60"/>
+                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Password:" Margin="5" MinWidth="60"/>
+                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="AuthCode-Flow Authentication" >
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="ClientID:" Margin="5" MinWidth="80"/>
+                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="TenantID:  " Margin="5" MinWidth="80"/>
+                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Redirect-URI:  " Margin="5" MinWidth="80"/>
+                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+        <Button Content="Sign-in"  Style="{StaticResource GoButtonStyle}" />
+        <Button Content="Sign-out" Style="{StaticResource GoButtonStyle}" IsEnabled="False" />
+        </StackPanel>
+        <GroupBox Header="Authentication Information" >
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox MinHeight="100" MinWidth="300" IsReadOnly="True"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
 </Window>
