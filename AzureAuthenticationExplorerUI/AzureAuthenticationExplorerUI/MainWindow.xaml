@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Azure Authentication Explorer (Chris Niebuhr)" Height="450" Width="885.111" WindowStartupLocation="CenterScreen">
+        Title="Azure Authentication Explorer (Chris Niebuhr)" Height="450" Width="750" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <GroupBox Header="Select Authentication option"  HorizontalAlignment="Left" Margin="5">

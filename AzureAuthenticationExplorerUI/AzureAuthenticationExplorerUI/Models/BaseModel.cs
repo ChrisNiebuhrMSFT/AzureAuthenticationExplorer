@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AzureAuthenticationExplorerUI.Models
 {
+    /// <summary>
+    /// Baseclass for all Models in this Project
+    /// </summary>
    public class BaseModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
+        //We use the CallerMemberName Attribute to autopopulate the Callername
         protected void ChangeProperty([CallerMemberName] string propName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));

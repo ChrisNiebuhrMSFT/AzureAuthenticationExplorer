@@ -1,29 +1,37 @@
 ﻿using AzureAuthenticationExplorerUI.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace AzureAuthenticationExplorerUI.Commands
 {
-    public class RelayCommand : ICommand
+    /// <summary>
+    /// Respresents the Logon Command used in the Viewmodel
+    /// </summary>
+    public class LogOnCommand : ICommand
     {
+        //To Access the Viewmodel inside this Class
         private readonly ViewModel _ViewModel;
 
-        public RelayCommand(ViewModel viewModel)
+        public LogOnCommand(ViewModel viewModel)
         {
             _ViewModel = viewModel;
         }
+        /// <summary>
+        /// Normally ICommand only works for Routed Events. 
+        /// To make this Command work as expected in WPF we have to do this
+        /// </summary>
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
+        /// <summary>
+        /// Conditions to Enable or Disable the LogonButton
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public bool CanExecute(object parameter)
         {
             bool IsEnabled = false;

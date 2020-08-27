@@ -1,7 +1,4 @@
-﻿
-using System.Threading.Tasks;
-
-namespace AzureAuthenticationExplorerUI.Models
+﻿namespace AzureAuthenticationExplorerUI.Models
 {
     /// <summary>
     /// Represents the Authenticationdata
@@ -9,6 +6,7 @@ namespace AzureAuthenticationExplorerUI.Models
     public class AuthenticationData : BaseModel
     {
 
+        //ClientID of Azure App
         private string _ClientID;
         public string ClientID
         {
@@ -18,18 +16,9 @@ namespace AzureAuthenticationExplorerUI.Models
                 _ClientID = value;
                 ChangeProperty();
             }
-        }
-
-        private string _UserName;
-        public string UserName
-        {
-            get { return _UserName; }
-            set
-            {
-                _UserName = value;
-            }
-        }
-
+        } 
+        
+        //Azure TenantID
         private string _TenantID;
 
         public string TenantID
@@ -42,6 +31,7 @@ namespace AzureAuthenticationExplorerUI.Models
             }
         }
 
+        //The Clientsecret configured in App-Registration
         private string _ClientSecret;
 
         public string ClientSecret
@@ -54,6 +44,7 @@ namespace AzureAuthenticationExplorerUI.Models
             }
         }
 
+        //The Redirect-Uri configured in App-Registration
         private string _RedirectURI;
 
         public string RedirectURI
@@ -64,8 +55,6 @@ namespace AzureAuthenticationExplorerUI.Models
                 _RedirectURI = value;
                 ChangeProperty();
             }
-        }
-
-        
+        }     
     }
 }
