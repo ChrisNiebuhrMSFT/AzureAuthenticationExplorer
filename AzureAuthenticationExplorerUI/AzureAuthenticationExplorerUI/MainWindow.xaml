@@ -3,32 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AzureAuthenticationExplorerUI"
         mc:Ignorable="d"
-        Title="Azure Authentication Explorer (Chris Niebuhr)" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Azure Authentication Explorer (Chris Niebuhr)" Height="450" Width="885.111" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <GroupBox Header="Select Authentication option"  HorizontalAlignment="Left" Margin="5">
                 <StackPanel Margin="5">
-                    <RadioButton Content="Password-Flow Authentication" />
-                    <RadioButton Content="AuthCode-Flow Authentication" />
-                    <RadioButton Content="DeviceCode-Flow Authentication" />
-                    <RadioButton Content="Client Credential-Flow Authentication" />
+                    <RadioButton x:Name="RDBtnAuthFlow" Content="AuthCode-Flow Authentication" IsChecked="{Binding AuthCodeChecked}"  />
+                    <RadioButton Content="DeviceCode-Flow Authentication" IsChecked="{Binding DeviceCodeChecked}"/>
+                    <RadioButton x:Name="RDBtnClientCred" Content="Client Credential-Flow Authentication" IsChecked="{Binding ClientCodeChecked}" />
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Password-Flow Authentication" >
+            <GroupBox  Header="AuthCode-Flow Authentication" Visibility="{Binding ElementName=RDBtnAuthFlow, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}"  >
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="UserName:" Margin="5" MinWidth="60"/>
-                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                        <TextBlock Text="ClientID:" Margin="5" MinWidth="80"/>
+                        <TextBox Text="{Binding AuthData.ClientID}" Margin="5" MinWidth="100"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="Password:" Margin="5" MinWidth="60"/>
-                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                        <TextBlock Text="TenantID:  " Margin="5" MinWidth="80"/>
+                        <TextBox Text="{Binding AuthData.TenantID}"  Margin="5" MinWidth="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Redirect-URI:  " Margin="5" MinWidth="80"/>
+                        <TextBox Text="{Binding AuthData.RedirectURI}"  Margin="5" MinWidth="100"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="AuthCode-Flow Authentication" >
+            <GroupBox  Header="Client Credential-Flow Authentication" Visibility="{Binding ElementName=RDBtnClientCred, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}"  >
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="ClientID:" Margin="5" MinWidth="80"/>
@@ -39,15 +41,15 @@
                         <TextBox Text="" Margin="5" MinWidth="100"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="Redirect-URI:  " Margin="5" MinWidth="80"/>
-                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                        <TextBlock Text="ClientSecret:  " Margin="5" MinWidth="80"/>
+                        <TextBox Text="{Binding AuthData.ClientSecret}" Margin="5" MinWidth="100"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-        <Button Content="Sign-in"  Style="{StaticResource GoButtonStyle}" />
-        <Button Content="Sign-out" Style="{StaticResource GoButtonStyle}" IsEnabled="False" />
+        <Button Content="Sign-in" Command="{Binding LogOnCommand}" Style="{StaticResource GoButtonStyle}"/>
+        <Button Content="Sign-out" Style="{StaticResource LogoutButtonStyle}" IsEnabled="False" />
         </StackPanel>
         <GroupBox Header="Authentication Information" >
             <StackPanel>
