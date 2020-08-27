@@ -18,15 +18,15 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="ClientID:" Margin="5" MinWidth="80"/>
-                        <TextBox Text="{Binding AuthData.ClientID}" Margin="5" MinWidth="100"/>
+                        <TextBox Text="{Binding AuthData.ClientID, UpdateSourceTrigger=PropertyChanged}" Margin="5" MinWidth="100"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="TenantID:  " Margin="5" MinWidth="80"/>
-                        <TextBox Text="{Binding AuthData.TenantID}"  Margin="5" MinWidth="100"/>
+                        <TextBox Text="{Binding AuthData.TenantID, UpdateSourceTrigger=PropertyChanged}"  Margin="5" MinWidth="100"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="Redirect-URI:  " Margin="5" MinWidth="80"/>
-                        <TextBox Text="{Binding AuthData.RedirectURI}"  Margin="5" MinWidth="100"/>
+                        <TextBox Text="{Binding AuthData.RedirectURI, UpdateSourceTrigger=PropertyChanged}"  Margin="5" MinWidth="100"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
@@ -34,21 +34,21 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="ClientID:" Margin="5" MinWidth="80"/>
-                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                        <TextBox Text="{Binding AuthData.ClientID, UpdateSourceTrigger=PropertyChanged}" Margin="5" MinWidth="100"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="TenantID:  " Margin="5" MinWidth="80"/>
-                        <TextBox Text="" Margin="5" MinWidth="100"/>
+                        <TextBox Text="{Binding AuthData.TenantID, UpdateSourceTrigger=PropertyChanged}" Margin="5" MinWidth="100"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="ClientSecret:  " Margin="5" MinWidth="80"/>
-                        <TextBox Text="{Binding AuthData.ClientSecret}" Margin="5" MinWidth="100"/>
+                        <TextBox Text="{Binding AuthData.ClientSecret, UpdateSourceTrigger=PropertyChanged}" Margin="5" MinWidth="100"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-        <Button Content="Sign-in" Command="{Binding LogOnCommand}" Style="{StaticResource GoButtonStyle}"/>
+        <Button Content="Sign-in" Command="{Binding LogOnCommand, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource GoButtonStyle}"/>
         <Button Content="Sign-out" Style="{StaticResource LogoutButtonStyle}" IsEnabled="False" />
         </StackPanel>
         <GroupBox Header="Authentication Information" >

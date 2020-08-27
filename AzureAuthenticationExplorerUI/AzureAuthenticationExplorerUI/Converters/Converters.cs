@@ -15,7 +15,7 @@ namespace AzureAuthenticationExplorerUI.Converters
         {
             bool vis = (bool)value;
 
-            return true; // vis ? Visibility.Visible : Visibility.Collapsed;
+            return  vis ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

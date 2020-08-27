@@ -26,7 +26,22 @@ namespace AzureAuthenticationExplorerUI.Commands
 
         public bool CanExecute(object parameter)
         {
-            return _ViewModel.AuthCodeChecked || _ViewModel.ClientCodeChecked || _ViewModel.DeviceCodeChecked;
+            bool IsEnabled = false;
+            if(_ViewModel.AuthCodeChecked)
+            {
+                IsEnabled = !(string.IsNullOrEmpty(_ViewModel.AuthData.ClientID) || string.IsNullOrEmpty(_ViewModel.AuthData.TenantID)
+                    || string.IsNullOrEmpty(_ViewModel.AuthData.RedirectURI));
+            }
+            if (_ViewModel.DeviceCodeChecked)
+            {
+                IsEnabled = !(string.IsNullOrEmpty(_ViewModel.AuthData.ClientID) || string.IsNullOrEmpty(_ViewModel.AuthData.TenantID));
+            }
+            if (_ViewModel.ClientCodeChecked)
+            {
+                IsEnabled = !(string.IsNullOrEmpty(_ViewModel.AuthData.ClientID) || string.IsNullOrEmpty(_ViewModel.AuthData.TenantID)
+                    || string.IsNullOrEmpty(_ViewModel.AuthData.ClientSecret));
+            }
+            return IsEnabled;
         }
 
         public void Execute(object parameter)
