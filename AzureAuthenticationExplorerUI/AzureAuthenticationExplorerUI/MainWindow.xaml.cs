@@ -12,8 +12,7 @@ namespace AzureAuthenticationExplorerUI
         public MainWindow()
         {
             InitializeComponent();
-           ViewModel viewModel = new ViewModel();
-            this.DataContext = viewModel;
+            this.DataContext = new ViewModel();
         }
     }
 }

@@ -14,7 +14,7 @@
             set 
             { 
                 _ClientID = value;
-                ChangeProperty();
+                OnPropertyChanged();
             }
         } 
         
@@ -27,23 +27,9 @@
             set 
             { 
                 _TenantID = value;
-                ChangeProperty();
+                OnPropertyChanged();
             }
         }
-
-        //The Clientsecret configured in App-Registration
-        private string _ClientSecret;
-
-        public string ClientSecret
-        {
-            get { return _ClientSecret; }
-            set
-            {
-                _ClientSecret = value;
-                ChangeProperty();
-            }
-        }
-
         //The Redirect-Uri configured in App-Registration
         private string _RedirectURI;
 
@@ -53,7 +39,7 @@
             set
             { 
                 _RedirectURI = value;
-                ChangeProperty();
+                OnPropertyChanged();
             }
         }     
     }

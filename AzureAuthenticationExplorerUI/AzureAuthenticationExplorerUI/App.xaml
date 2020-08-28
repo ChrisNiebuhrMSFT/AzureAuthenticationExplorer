@@ -71,6 +71,7 @@
                 </Border>
             </Grid>
         </ControlTemplate>
+        
 
         <ControlTemplate TargetType="Button" x:Key="LogoutButton">
             <Grid>
@@ -145,11 +146,7 @@
             <Setter Property="Template" Value="{StaticResource GoButton}" />
         </Style>
 
-        <Style TargetType="Button" x:Key="LogoutButtonStyle">
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Padding" Value="7,3"/>
-            <Setter Property="Margin" Value="5"/>
+        <Style TargetType="Button" x:Key="LogoutButtonStyle" BasedOn="{StaticResource GoButtonStyle}">
             <Setter Property="Template" Value="{StaticResource LogoutButton}" />
         </Style>
         

@@ -12,7 +12,7 @@ namespace AzureAuthenticationExplorerUI.Models
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         //We use the CallerMemberName Attribute to autopopulate the Callername
-        protected void ChangeProperty([CallerMemberName] string propName = "")
+        protected void OnPropertyChanged([CallerMemberName] string propName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
