@@ -29,9 +29,9 @@ namespace AzureAuthenticationExplorerUI.ViewModels
             AuthData = new AuthenticationData
             {
                 //Exampledata
-                //ClientID = "a072bf0d-d9e7-4313-9a5d-ee5e3ee0dad4",
-                //TenantID = "f22d8e2c-d37c-4b2f-9b0b-b7110232ff3d",
-                //RedirectURI = "http://localhost"
+                ClientID = "a072bf0d-d9e7-4313-9a5d-ee5e3ee0dad4",
+                TenantID = "f22d8e2c-d37c-4b2f-9b0b-b7110232ff3d",
+                RedirectURI = "http://localhost"
             };
 
         }
