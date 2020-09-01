@@ -11,7 +11,7 @@ Just provide the Informations from your Azure App-Registration:
 
 After you've provided the information you can select a Sign-in Method.  
 * Interactive  
-* Silently => This will only work, if the Tool finds Token-Cache Data otherwise, you   
+* Silently => This will only work if the Tool finds a Token-Cache Data File otherwise  
 you will be asked to login interactively instead.   
 
 ![AAE2](/AzureAuthenticationExplorerUI/AzureAuthenticationExplorerUI/Assets/AAE_2.png)    
