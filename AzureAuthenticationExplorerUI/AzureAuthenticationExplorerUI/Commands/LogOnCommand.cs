@@ -1,4 +1,5 @@
 ﻿using AzureAuthenticationExplorerUI.Authentication;
+using AzureAuthenticationExplorerUI.Converters;
 using AzureAuthenticationExplorerUI.ViewModels;
 using System;
 using System.Windows;
@@ -43,23 +44,39 @@ namespace AzureAuthenticationExplorerUI.Commands
             }
             if (_ViewModel.SilentLogonChecked)
             {
-                IsEnabled = System.IO.File.Exists(TokenCacheHelper.CacheFilePath);
+                IsEnabled = !(string.IsNullOrEmpty(_ViewModel.AuthData.ClientID) || string.IsNullOrEmpty(_ViewModel.AuthData.TenantID)
+                || string.IsNullOrEmpty(_ViewModel.AuthData.RedirectURI) || _ViewModel.Authenticator.IsConnected)
+                && System.IO.File.Exists(TokenCacheHelper.CacheFilePath);
+
             }
             return IsEnabled;
         }
 
         public async void Execute(object parameter)
         {
+            string result;
+            _ViewModel.ResultTextData.ResultText = string.Empty;
             if (_ViewModel.InterActiveChecked)
             {
-                var result = await _ViewModel.Authenticator.AuthenticateInteractive();
-                _ViewModel.ResultTextData.ResultText = result.AccessToken;
+                try
+                {
+                    result = await _ViewModel.Authenticator.AuthenticateInteractive();
+                    _ViewModel.ResultTextData.ResultText = result;
+                }
+                catch (Exception ex)
+                {
+                    _ViewModel.ResultTextData.ResultText = ex.Message;
+                }
             }
 
             if (_ViewModel.SilentLogonChecked)
             {
-                var result = await _ViewModel.Authenticator.AuthenticateSilent();
-                _ViewModel.ResultTextData.ResultText = result.AccessToken;
+                result = await _ViewModel.Authenticator.AuthenticateSilent();
+                if (result != null)
+                    _ViewModel.ResultTextData.ResultText = result; 
+                else
+                   _ViewModel.ResultTextData.ResultText = await _ViewModel.Authenticator.AuthenticateInteractive();
+              
             }
         }
     }

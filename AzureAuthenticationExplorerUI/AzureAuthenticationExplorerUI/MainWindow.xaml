@@ -4,16 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Azure Authentication Explorer (Chris Niebuhr)" Height="500" Width="750" WindowStartupLocation="CenterScreen">
+        Title="Azure Authentication Explorer (Chris Niebuhr)" Height="550" Width="850" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <GroupBox Header="Select Authentication option"  HorizontalAlignment="Left" Margin="5">
+            <GroupBox Header="Select Authentication option"  HorizontalAlignment="Left" Margin="5" MinHeight="120">
                 <StackPanel Margin="5">
                     <RadioButton x:Name="RDBtnInteractive" Content="Interactive Login" IsChecked="{Binding InterActiveChecked}"  />
                     <RadioButton x:Name="RDBtnSilent" Content="Silent Login (if possible)" IsChecked="{Binding SilentLogonChecked}" />
                 </StackPanel>
             </GroupBox>
-            <GroupBox  Header="App Informations" Visibility="{Binding ElementName=RDBtnInteractive, Path=IsChecked, Converter={StaticResource BoolToVisibilityConverter}}"  >
+            <GroupBox  Header="App Informations">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="ClientID:" Margin="5" MinWidth="80"/>
@@ -25,20 +25,27 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="Redirect-URI:  " Margin="5" MinWidth="80"/>
-                        <TextBox Text="{Binding AuthData.RedirectURI, UpdateSourceTrigger=PropertyChanged}"  Margin="5" MinWidth="100"/>
+                        <TextBox Text="{Binding AuthData.RedirectURI, UpdateSourceTrigger=PropertyChanged}"  Margin="5" MinWidth="100" />
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Button Content="Sign-in" Command="{Binding LogOnCommand, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource GoButtonStyle}"/>
-            <Button Content="Sign-out" Style="{StaticResource LogoutButtonStyle}" IsEnabled="False" />
+            <Button Content="Sign-out" Style="{StaticResource LogoutButtonStyle}" Command="{Binding LogOutCommand}" />
         </StackPanel>
         <GroupBox Header="Authentication Information" >
-            <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <GroupBox  Header="Accesstoken">
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Text="{Binding ResultTextData.ResultText}" MinHeight="100" MinWidth="300" Width="300" Height="200" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+                    <TextBox Text="{Binding ResultTextData.ResultText}" Height="200" Width="300"  IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" />
                 </StackPanel>
+                </GroupBox>
+                <GroupBox  Header="TokenDetails">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding ResultTextData.ReadableToken, Mode=OneWay}" Width="470" Height="200" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </GroupBox>
             </StackPanel>
         </GroupBox>
     </StackPanel>
