@@ -27,6 +27,6 @@ The Scope (permissions) the token gives you for example.
 
 ![AAE4](/AzureAuthenticationExplorerUI/AzureAuthenticationExplorerUI/Assets/AAE_4.png)    
 
-From now on you can either use the Silent Logon or you can Sign out und Sign in with another account or against another App-Registration.   
+From now on you can either use the Silent Logon or you can Sign out und Sign in with another account or use another App-Registration.   
 Enjoy!
 
