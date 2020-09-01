@@ -15,13 +15,12 @@ namespace AzureAuthenticationExplorerUI.ViewModels
         //Command for the LogOnButton
         private readonly LogOnCommand  _LogOnCommand;
         private readonly LogOutCommand _LogOutCommand;
-        private readonly Authenticator _Authenticator;
 
 
         //Initialize Data
         public ViewModel()
         {
-            _Authenticator = new Authenticator(this);
+            Authenticator = new Authenticator(this);
             _LogOnCommand = new LogOnCommand(this);
             _LogOutCommand = new LogOutCommand(this);
 
@@ -40,7 +39,7 @@ namespace AzureAuthenticationExplorerUI.ViewModels
         public bool InterActiveChecked { get; set; }
         public bool SilentLogonChecked { get; set; }
         public ResultTextData ResultTextData { get; set; }
-        public Authenticator Authenticator { get { return _Authenticator; } }
+        public Authenticator Authenticator { get; }
 
         public ICommand LogOnCommand { get { return _LogOnCommand; } }
         public ICommand LogOutCommand { get { return _LogOutCommand; } }
